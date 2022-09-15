@@ -1,108 +1,36 @@
 # Cypress Contact Form Test
 
-A basic example of using [Cypress](https://www.cypress.io/) to test a contact form
-
-a
-# Cypress Contact Form Test
-
-  A basic example of using [Cypress](https://www.cypress.io/) to test a contact form. 
+A basic example of using [Cypress](https://www.cypress.io/) to test a contact form.
 
 Used for the frontend training workshop 15/09/2022
-  
-
 ## Info
 
-  - Tests form submission and validation  
- - Includes CI integration (tests are run in github actions each time code is pushed)
- 
- 
-
+- Tests form submission and validation
+- Includes CI integration (tests are run in github actions each time code is pushed)
 ## Steps we performed
 
-  
-
 **Installed cypress**
-
 - npm install —save-dev
 
-  
-
 **Opened the cypress app and completed setup**
-
--  npx cypress open
-
+- npx cypress open
 - chose 'End to End' and accept the default config options
 
-  
-
 **Added tests**
-
 - Added a test for form submission
-
 - Added a test for validation
 
-  
-
 **Refactored tests**
-
 - Moved the cy.visit() command into a [beforeEach hook](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests#Hooks)
-
 - Used the 'Page Object Pattern' to avoid repetition
-
-	- Created a file at support/page_objects/ContactForm.js
-
-	- Added a class to the file
-
-	- Created re-usable methods that contain the code we used to select elements on the page 
-
+  - Created a file at support/page_objects/ContactForm.js
+  - Added a class to the file
+  - Created re-usable methods that contain the code we used to select elements on the page
 - Setup [environment variables](https://docs.cypress.io/guides/guides/environment-variables.html)
-
-	- Added an 'env' property to cypress.config.js
-
-	- Added a firstName property inside env
-
-	- Called Cypress.env('firstName') to reference it within our test
-
-
-  
+  - Added an 'env' property to cypress.config.js
+  - Added a firstName property inside env
+  - Called Cypress.env('firstName') to reference it within our test
 
 **Setup CI integration**
-
 - Created a github actions yaml file at .github/workflows/cypress.yaml
-
 - Used the example from the Cypress docs to run our tests - https://docs.cypress.io/guides/continuous-integration/github-actions#Basic-Setup
-## Info
-Tests form submission and validation
-
-Tests are run each time changes are pushed
-
-Used for the frontend training workshop
-
-## Steps we performed
-
-**Installed cypress**
- - npm install —save-dev 
-
-**Opened the cypress app and completed setup**
- - cypress npx cypress open 
- - chose 'End to End'  and accept the default config options 
-
-**Added tests**
- - Added a test for form submission
- - Added a test for validation
-
-**Refactored tests**
- - Moved the cy.visit() command into a beforeEach hook 
- - Used the page object pattern to avoid repeating the code
-	 - Created a file at support/page_objects/ContactForm.js
-	 - Added a class to the file
-	 - Created re-usable methods that can be used to select elements on the page
- - Setup environment variables
-	 - Added an 'env' property to cypress.config.js 
-	 - Added a firstName property inside env
-	 - Called Cypress.env('firstName') to reference it within our test
-	 - See: https://docs.cypress.io/guides/guides/environment-variables.html
-
-**Setup CI integration**
- - Created a github actions yaml file at .github/workflows/cypress.yaml
- - Used the example from the Cypress docs - https://docs.cypress.io/guides/continuous-integration/github-actions#Basic-Setup
