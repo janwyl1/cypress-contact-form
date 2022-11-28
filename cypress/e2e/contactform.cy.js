@@ -1,12 +1,13 @@
 import ContactForm from '../support/page_objects/ContactForm'
+import 'cypress-axe'
 
 const contact = new ContactForm
-
 
 describe('Contact Form', () => {
 
   beforeEach(() => {
     cy.visit(Cypress.env('formUrl'))  // env vars are defined in cypress.config.js
+    cy.injectAxe()
   })
 
   it('submits the form successfully', () => {
@@ -32,12 +33,29 @@ describe('Contact Form', () => {
     cy.get('#message-input + .hs-form__field__error span').contains('Please complete this required field.')
     cy.contains('Please complete all required fields.')
   })
-
-
   it("should display a validation error when email is invalid", () => {
     cy.get('#email-input').type('invalid')
     contact.getSubmitBtn()
 
     cy.get('#email-input + .hs-form__field__error span').contains('Email must be formatted correctly.')
+  })
+
+  it("should have no wcag2 violations on load", () => {
+    cy.checkA11y(null, {
+      runOnly: {
+        type: 'tag',
+        values: ['wcag2a']
+      }
+    }) 
+  })
+
+  it("should have no wcag2 violations when validation messages are visible", () => {
+    contact.getSubmitBtn()
+    cy.checkA11y(null, {
+      runOnly: {
+        type: 'tag',
+        values: ['wcag2a']
+      }
+    }) 
   })
 })
