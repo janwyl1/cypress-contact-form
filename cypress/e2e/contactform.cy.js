@@ -6,12 +6,12 @@ const contact = new ContactForm
 describe('Contact Form', () => {
 
   beforeEach(() => {
-    cy.visit('https://share.hsforms.com/1-79TdZVpS9igd9mdtdea5w1khjs')
+    cy.visit(Cypress.env('formUrl'))  // env vars are defined in cypress.config.js
   })
 
   it('submits the form successfully', () => {
-    contact.getFirstNameInpt().type(Cypress.env('firstName')) // env vars are defined in cypress.config.js
-    contact.getLastNameInpt().type('anwyl')
+    contact.getFirstNameInpt().type('James')
+    contact.getLastNameInpt().type('Anwyl')
     contact.getEmailInpt().type('james.anwyl@parall.ax')
     contact.getPhoneInpt().type('07555555555')
     contact.getCompanyInpt().type('Parallax')
@@ -23,9 +23,21 @@ describe('Contact Form', () => {
     cy.get('#form-target .hs-form__thankyou-message strong').contains(/thank you for contacting us!/i)
   })
 
-  it("should display an error if first name field is empty", () => {
+  it("should display validation errors when required fields are empty", () => {
     contact.getSubmitBtn()
 
     cy.get('#firstname-input + .hs-form__field__error span').contains('Please complete this required field.')
+    cy.get('#lastname-input + .hs-form__field__error span').contains('Please complete this required field.')
+    cy.get('#email-input + .hs-form__field__error span').contains('Please complete this required field.')
+    cy.get('#message-input + .hs-form__field__error span').contains('Please complete this required field.')
+    cy.contains('Please complete all required fields.')
+  })
+
+
+  it("should display a validation error when email is invalid", () => {
+    cy.get('#email-input').type('invalid')
+    contact.getSubmitBtn()
+
+    cy.get('#email-input + .hs-form__field__error span').contains('Email must be formatted correctly.')
   })
 })

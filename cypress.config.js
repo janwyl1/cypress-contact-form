@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
-      firstName: 'james123'
+      formUrl: 'https://share.hsforms.com/1-79TdZVpS9igd9mdtdea5w1khjs'
     }
   },
 });
