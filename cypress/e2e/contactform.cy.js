@@ -1,5 +1,4 @@
 import ContactForm from '../support/page_objects/ContactForm'
-import 'cypress-axe'
 
 const contact = new ContactForm
 
