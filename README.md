@@ -37,6 +37,6 @@ Used for the frontend training workshop 15/09/2022
 
 **Added Accessibility tests**
 - Installed [cypress-axe](https://github.com/component-driven/cypress-axe) 
-- Imported the library in your test file
+- Imported the library in our test file
 - Called cy.injectAxe() in our beforeEach method
 - Created separate tests for on page load, and after triggering validation messages
