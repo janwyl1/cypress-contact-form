@@ -19,13 +19,13 @@ describe('Contact Form', () => {
     contact.getLocationInpt().type('Leeds')
     contact.getMessageInpt().type('Test 123')
   
-    contact.getSubmitBtn()
+    contact.getSubmitBtn().click()
 
     cy.get('#form-target .hs-form__thankyou-message strong').contains(/thank you for contacting us!/i)
   })
 
   it("should display validation errors when required fields are empty", () => {
-    contact.getSubmitBtn()
+    contact.getSubmitBtn().click()
 
     cy.get('#firstname-input + .hs-form__field__error span').contains('Please complete this required field.')
     cy.get('#lastname-input + .hs-form__field__error span').contains('Please complete this required field.')
@@ -35,7 +35,7 @@ describe('Contact Form', () => {
   })
   it("should display a validation error when email is invalid", () => {
     cy.get('#email-input').type('invalid')
-    contact.getSubmitBtn()
+    contact.getSubmitBtn().click()
 
     cy.get('#email-input + .hs-form__field__error span').contains('Email must be formatted correctly.')
   })
@@ -50,7 +50,7 @@ describe('Contact Form', () => {
   })
 
   it("should have no wcag2 violations when validation messages are visible", () => {
-    contact.getSubmitBtn()
+    contact.getSubmitBtn().click()
     cy.checkA11y(null, {
       runOnly: {
         type: 'tag',

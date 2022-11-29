@@ -1,7 +1,7 @@
 class ContactForm {
 
     getSubmitBtn() {
-        return cy.get('button[name="Submit"]').click()
+        return cy.get('button[name="Submit"]')
     }
 
     getFirstNameInpt() {
