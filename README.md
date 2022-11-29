@@ -33,7 +33,7 @@ Used for the frontend training workshop 15/09/2022
 
 **Setup CI integration**
 - Created a github actions yaml file at .github/workflows/cypress.yaml
-- Used the example from the Cypress docs to run our tests - https://docs.cypress.io/guides/continuous-integration/github-actions#Basic-Setup
+- Used the [example from the Cypress docs](https://docs.cypress.io/guides/continuous-integration/github-actions#Basic-Setup) to run our tests
 
 **Added Accessibility tests**
 - Installed [cypress-axe](https://github.com/component-driven/cypress-axe) 
