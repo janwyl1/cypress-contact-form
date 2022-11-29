@@ -1,0 +1,4 @@
+{}
+
+// Add empty .babelrc file to get tests running in CI
+// https://github.com/cypress-io/cypress/issues/8364
